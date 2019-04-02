@@ -1,7 +1,8 @@
 const mysql = require('mysql')
 let dbBase = {},
   pool
-const init = (options) => {
+const init = (options = {}) => {
+  if (!options.database) throw Error('database is required!')
   const o = {
     host: options.host || '127.0.0.1',
     user: options.user || 'root',
